@@ -5,10 +5,12 @@
         Parada {{busquedaActual.id}} - {{busquedaActual.title}} <br>
         Destinos
         <div v-for="destino in busquedaActual.destinos">
-            {{destino.linea}} - {{destino.destino}} - {{destino.primero}}            
+            <div v-if="autobuses.includes(destino.linea)">{{destino.linea}} - {{destino.destino}} - {{destino.primero}} </div>           
         </div>
     </br>
     </div>
+    <br>Estos son los autobuses que sueles coger y mostraremos info solo de esos:    </br>
+    {{autobuses}}
     <br>Estos son los destinos que tienes configurados:    </br>
 
     <div v-for="item in postes">
@@ -32,6 +34,7 @@
         message: 'DeivizPostes v1.0!',
         enlaceParadas: 'https://www.zaragoza.es/sede/servicio/urbanismo-infraestructuras/transporte-urbano/poste-autobus/tuzsa-',
         busquedaActual : null,
+        autobuses: ['33','21','36','CI1','CI2','24'],
         postes : [
             {
                 "Nombre" : "Casa",
